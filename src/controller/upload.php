@@ -6,20 +6,11 @@
  * Time: 1:57 PM
  */
 
-define("UPLOAD_DIR", "./uploads/");
+define("UPLOAD_DIR", "../uploads/");
 // show upload form
-//if ($_SERVER["REQUEST_METHOD"] == "GET") {
-//    ?>
-<!--    <em>Only GIF, JPG, and PNG files are allowed.</em>-->
-<!--    <form action="upload.php" method="post" enctype="multipart/form-data">-->
-<!--        <input type="file" name="myFile"/>-->
-<!--        <br/>-->
-<!--        <input type="submit" value="Upload"/>-->
-<!--    </form>-->
-<?php
-//}
+
 // process file upload
-//else if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["myFile"])) {
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["myFile"])) {
     $myFile = $_FILES["myFile"];      //when POST + the form input type is file, the predefined variable
                                       //$_FILES array can be used. It contains data on the uploaded file.
@@ -52,10 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_FILES["myFile"])) {
     //move_uploaded_file() performs additional checks to ensure the file was indeed uploaded
     //by the HTTP POST request, so always use it over copy() or move().
     if (!$success) {
-        echo "<p>Unable to save file.</p>";
-        exit;
+//        echo "<p>Unable to save file.</p>";
+//        exit;
+        $result = $name;
+    }
+    else{
+        $result = $name;
     }
     // set proper permissions on the new file
     chmod(UPLOAD_DIR . $name, 0644);    //0644 owner rw, group r, world r permissions
-    echo "<p>Uploaded file saved as " . $name . ".</p>";
+
+    header("Location: http://localhost:8000/4_FileUpload/?result=$result");
+
+
 }
