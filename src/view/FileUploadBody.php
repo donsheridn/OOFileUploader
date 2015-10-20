@@ -1,7 +1,7 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Upload a photo and set it as yor homepage</h1>
+        <h1>Upload a photo and set it as your homepage</h1>
         <br><br>
         <p class="lead">Only GIF, JPG, and PNG files are allowed.</p>
         <br>
